@@ -1,0 +1,55 @@
+{% extends "myapp/home.html" %}
+{% load static %}
+{% block content %}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <!-- /.container-fluid -->
+  <div class="container-fluid">
+    <!-- /.row -->
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Upload Data</h1>
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item active">Upload Data</li>
+        </ol>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <!-- /.card -->
+        <div class="card">
+          <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="form-group">
+                  <label for="file">Select Excel Files (multiple allowed)</label>
+                  <input type="file" name="file" id="file" class="form-control-file" multiple>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "myapp/index.html" %}
+{% load static %}
+{% block content %}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Edit Driver</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'data_driver' %}">Data Driver</a></li>
+          <li class="breadcrumb-item active">Edit Driver</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <form method="POST">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>Kode Driver</label>
+                    <input type="text" class="form-control" value="{{ driver.KodeDriver }}" name="KodeDriver">
+                  </div>
+                  <div class="form-group">
+                    <label>Nama Driver</label>
+                    <input type="text" class="form-control" value="{{ driver.NamaDriver }}" name="NamaDriver">
+                  </div>
+                  <!-- Unit Kendaraan
+                  <div class="form-group">
+                    <label for="NamaUnit">Unit Kendaraan</label>
+                    <select class="form-control" name="NamaUnit">
+                      <option selected disabled>{{ driver.NamaUnit }}</option>
+                      {% for Unit in Units %}
+                        <option value="{{ Unit.NamaUnit }} - {{ Unit.PlatNomor }}" {% if driver.NamaUnit == Unit.NamaUnit %}selected{% endif %}>{{ Unit.NamaUnit }} - {{ Unit.PlatNomor }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  -->
+                  <div class="form-group">
+                    <label>Kantor</label>
+                    <input type="text" class="form-control" value="{{ driver.Kantor }}" name="Kantor">
+                  </div>
+                  <div class="form-group">
+                    <label>Status Driver</label>
+                    <select class="form-control" name="Status">
+                      <option {% if driver.Status == "Ready" %}selected{% endif %}>Ready</option>
+                      <option {% if driver.Status == "Non Ready" %}selected{% endif %}>Non Ready</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Kirim</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

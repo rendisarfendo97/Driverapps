@@ -1,0 +1,81 @@
+{% extends "myapp/index.html" %}
+{% load static %}
+{% block content %}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Edit Permintaan</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'data_permintaan' %}">Data Permintaan</a></li>
+          <li class="breadcrumb-item active">Edit Permintaan</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <form method="POST">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>Kode Permintaan</label>
+                    <input type="text" class="form-control" value="{{ permintaan.KodePermintaan }}" name="KodePermintaan">
+                  </div>
+                  <div class="form-group">
+                    <label>Nomer Surat Jalan</label>
+                    <input type="text" class="form-control" value="{{ permintaan.NomerSuratJalan }}" name="NomerSuratJalan">
+                  </div>
+                  <div class="form-group">
+                    <label>Nama Permintaan</label>
+                    <input type="text" class="form-control" value="{{ permintaan.NamaPermintaan }}" name="NamaPermintaan">
+                  </div>
+                  <div class="form-group">
+                    <label>Titik Antar</label>
+                    <input type="text" class="form-control" value="{{ permintaan.TitikAntar }}" name="TitikAntar">
+                  </div>
+                  <div class="form-group">
+                    <label>Titik Jemput</label>
+                    <input type="text" class="form-control" value="{{ permintaan.TitikJemput }}" name="TitikJemput">
+                  </div>
+                  <div class="form-group">
+                    <label for="NamaDriver">Nama Driver</label>
+                      <select class="form-control" name="NamaDriver" required>
+                        <option selected enabled>{{ permintaan.NamaDriver }}</option>
+                        {% for Driver in data_readydriver %}
+                          <option value="{{ Driver.NamaDriver }}">{{ Driver.NamaDriver }}</option>
+                        {% endfor %}
+                      </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="NamaUnit">Unit Kendaraan</label>
+                    <select class="form-control" name="NamaUnit" required>
+                      <option selected enabled>{{ permintaan.NamaUnit }}</option>
+                      {% for Unit in data_readyunit %}
+                        <option value="{{ Unit.NamaUnit }} - {{ Unit.PlatNomor }}">{{ Unit.NamaUnit }} - {{ Unit.PlatNomor }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Kirim</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

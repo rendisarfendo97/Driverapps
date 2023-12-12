@@ -1,0 +1,75 @@
+{% extends "myapp/index.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <h2 class="text-center display-4">SISTEM DRIVER MANAGEMENT</h2>
+  </div>
+</section>
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 col-12">
+        <a href="{% url 'data_permintaan' %}">
+        <div class="info-box">
+          <span class="info-box-icon bg-info"><i class="far fa-file"></i></span>
+          <div class="info-box-content">
+            <span href="{% url 'data_permintaan' %}" class="info-box-text">Data Permintaan</span>
+            <span class="info-box-number">{{ data_countpermintaan }}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        </a>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-12">
+        <a href="{% url 'data_driver' %}">
+        <div class="info-box">
+          <span class="info-box-icon bg-info"><i class="far fa-file"></i></span>
+          <div class="info-box-content">
+            <span href="{% url 'data_driver' %}" class="info-box-text">Data Driver</span>
+            <span class="info-box-number">{{ data_countdriver }}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        </a>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-12">
+        <a href="{% url 'data_unit' %}">
+        <div class="info-box">
+          <span class="info-box-icon bg-info"><i class="far fa-file"></i></span>
+          <div class="info-box-content">
+            <span href="{% url 'data_unit' %}" class="info-box-text">Data Unit</span>
+            <span class="info-box-number">{{ data_countunit }}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        </a>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-12">
+        <a href="#">
+        <div class="info-box">
+          <span class="info-box-icon bg-info"><i class="far fa-file"></i></span>
+          <div class="info-box-content">
+            <span href="#" class="info-box-text">Management User</span>
+            <span class="info-box-number">0</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        </a>
+        <!-- /.info-box -->
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+</section>
+<!-- Main content -->
+{% endblock %}
